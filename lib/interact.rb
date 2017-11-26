@@ -2,15 +2,15 @@ module Bartleby
   # Accept user inputs and provide the opportunity to validate substitutions
   class Interact
 
-    def self.test_substitutions(dict, header)
+    def self.test_substitutions(dict, header, dictionary)
       search_terms = set_search_terms(dict, header)
       search_results = conduct_search(dict, search_terms)
-      test_subs(search_results)
+      test_subs(search_results, dictionary)
     end
 
-    def self.test_subs(search_results)
+    def self.test_subs(search_results, dictionary)
       search_results.each do |x|
-        puts "#{x[0]} -> #{x[0].gsub("O", "JOE")}"
+        puts "#{x[0]} -> #{x[0].gsub("O", "JOE")}\t\t\t#{dictionary[x[0]]}"
       end
     end
 

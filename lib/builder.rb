@@ -13,7 +13,7 @@ module Bartleby
         # success = /^(?<word>[a-zA-Z]+)  (?<phoneme_string>[a-zA-Z].* OW.*)/ =~ term
         match = rx.match(term)
         next unless match
-        word = match[1]
+        word = match[1].downcase
         phoneme_string = match[2]
         # TODO I guess let's just drop stresses for now and reconsider if they start to seem important
         candidates[word] = phoneme_string.gsub(/[0-3]+/, "").split(" ")
